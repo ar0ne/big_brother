@@ -2,7 +2,7 @@
 
 cp big-brother-script.sh /opt/big-brother-script.sh
 
-chmod 744 /opt/big-brother-script.sh
+chmod 755 /opt/big-brother-script.sh
 
 cp big-brother.service /etc/systemd/system/big-brother.service
 

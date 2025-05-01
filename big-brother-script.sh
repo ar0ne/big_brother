@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -u
+
 # define which app is little brother
 little_brother='firefox'
 # define apps that should little brother should not know about
@@ -37,7 +39,6 @@ is_working_hours() {
     fi
 }
 
-
 # if current time not within working hours - kill LB
 if ! is_working_hours $start_hour $end_hour; then
     echo "Current time is outside of working hours. Sleep little bro."
@@ -55,5 +56,5 @@ fi
 # if LB is down, make it UP
 if ! [ "$(ps --no-headers -C $little_brother)" ]; then
     echo "Wake up little brother"
-    nohup $little_brother
+    nohup $little_brother > /dev/null 2>&1 &
 fi
