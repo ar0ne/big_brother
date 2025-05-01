@@ -1,0 +1,8 @@
+[Unit]
+Description=Big brother's timer
+
+[Timer]
+OnCalendar=Mon..Fri, *-*-* 09..20:*:00
+
+[Install]
+WantedBy=timers.target

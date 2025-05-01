@@ -1,0 +1,7 @@
+[Unit]
+Description=Big brother ensures little one won't see too much
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /opt/big-brother-script.sh
+
