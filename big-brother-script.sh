@@ -56,5 +56,5 @@ fi
 # if LB is down, make it UP
 if ! [ "$(ps --no-headers -C $little_brother)" ]; then
     echo "Wake up little brother"
-    nohup $little_brother > /dev/null 2>&1 &
+    nohup $little_brother > /dev/null 2>&1 & disown
 fi
