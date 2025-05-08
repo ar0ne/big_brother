@@ -1,13 +1,17 @@
 #!/bin/bash
 
-cp big-brother-script.sh /opt/big-brother-script.sh
+mkdir "${HOME}/.config/systemd/user"
 
-chmod 755 /opt/big-brother-script.sh
+cp big-brother-script.sh "${HOME}"/.config/big-brother-script.sh
 
-cp big-brother.service /etc/systemd/system/big-brother.service
+chmod 755 "${HOME}"/.config/big-brother-script.sh
 
-cp big-brother.timer /etc/systemd/system/big-brother.timer
+cp big-brother.service "${HOME}"/.config/systemd/user/big-brother.service
 
-systemctl daemon-reload
+cp big-brother.timer "${HOME}"/.config/systemd/user/big-brother.timer
 
-systemctl enable big-brother.timer
+systemctl --user daemon-reload
+
+systemctl --user enable big-brother.timer
+
+systemctl --user start big-brother.timer

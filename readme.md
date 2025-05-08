@@ -8,6 +8,6 @@ Edit *little_brother* and *whitelist* in `big-brother-script.sh`.
 
 If you need different working hours, you might also want to update timer config (by default from 09:00 till 20:00)
 
-To install you could use `$ sudo ./install.sh` or do it manually.
+To install you could use `$ ./install.sh` or do it manually.
 
-To check logs: `journalctl -u big-brother.service`
+To check logs: `journalctl --user -u big-brother.service`

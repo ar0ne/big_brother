@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -u
+# uncomment if you need to debug execution
+# set -eux
 
 # define which app is little brother
 little_brother='firefox'
@@ -56,5 +57,5 @@ fi
 # if LB is down, make it UP
 if ! [ "$(ps --no-headers -C $little_brother)" ]; then
     echo "Wake up little brother"
-    nohup $little_brother > /dev/null 2>&1 & disown
+    $little_brother
 fi
