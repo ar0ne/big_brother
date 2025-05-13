@@ -1,12 +1,16 @@
 #!/bin/bash
 
-mkdir "${HOME}/.config/systemd/user"
+mkdir -p "${HOME}/.config/systemd/user"
 
-cp big-brother-script.sh "${HOME}"/.config/big-brother-script.sh
+mkdir -p "${HOME}/.scripts"
 
-chmod 755 "${HOME}"/.config/big-brother-script.sh
+cp big-brother-script.sh "${HOME}"/.scripts/big-brother-script.sh
 
-cp big-brother.service "${HOME}"/.config/systemd/user/big-brother.service
+chmod 755 "${HOME}"/.scripts/big-brother-script.sh
+
+cp big-brother.service "${HOME}/.config/systemd/user/big-brother.service"
+
+sed -i "s|ExecStart=|ExecStart=$HOME/.scripts/big-brother-script.sh|g" "${HOME}"/.config/systemd/user/big-brother.service
 
 cp big-brother.timer "${HOME}"/.config/systemd/user/big-brother.timer
 

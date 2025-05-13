@@ -1,7 +1,8 @@
 [Unit]
-Description=Big brother ensures little one won't see too much
+Description=Big brother is watching you
 
 [Service]
 Type=forking
-ExecStart=/bin/bash /opt/big-brother-script.sh
+TimeoutSec=30
+ExecStart=
 

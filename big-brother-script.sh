@@ -55,7 +55,11 @@ if is_whitelist_app_running "${whitelist[@]}"; then
 fi
 
 # if LB is down, make it UP
-if ! [ "$(ps --no-headers -C $little_brother)" ]; then
-    echo "Wake up little brother"
-    $little_brother
+if pgrep -f $little_brother > /dev/null; then
+    echo "Little brother is up"
+else
+    echo "Wake up little one"
+    $little_brother &
 fi
+
+exit 0
